@@ -14,13 +14,49 @@ function generateRandomNumber(num) {
     `It always seems impossible until it is done.`, `Set your goals high and don’t stop till you get there.`,
 `You are enough just as you are.`] 
       
-        const proverbs = [`A bad workman always blames his tools.`, `A bird in hand is worth two in the bush.`,
+        const proverb = [`A bad workman always blames his tools.`, `A bird in hand is worth two in the bush.`,
     `Absence makes the heart grow fonder.`, `A chain is only as strong as its weakest link.`, `A drowning man will clutch at a straw.`, `Adversity and loss make a man wise.`]
  
 
-  let returnedJoke =''
+  let returnedWord =''
 
   const readline = require('readline').createInterface({
     input: process.stdin,
     output: process.stdout
   });
+
+  readline.question('Which heart warming words do you want to read? \nEnter "affirmation","encouragement" or "proverb": ', 
+  choice => {
+    let optionIndex = 0
+    switch (choice) {
+     case 'proverb': 
+     {
+         optionIndex = generateRandomNumber(proverb.length)
+         returnedWord = `\nA nice  ${choice}, ${proverb[optionIndex]}`
+     }
+     break
+     case 'encouragement': 
+     {
+         optionIndex = generateRandomNumber(encouragement.length)
+         returnedWord = `\nWord of  ${choice}, ${encouragement[optionIndex]}`
+     }
+     break
+     case 'affirmation': 
+     {
+         optionIndex = generateRandomNumber(affirmation.length)
+         returnedWord = `\nWord of ${choice}, ${affirmation[optionIndex]}`
+     }
+     break
+     default: returnedWord = `Enter 'affirmation', 'encouragement' or 'proverb'`
+     break
+   }
+  
+ function wordsOfWisdom(word) {
+     const logged = word
+     console.log(logged)
+ }
+ 
+ wordsOfWisdom(returnedWord)
+ 
+     readline.close();
+   });
